@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9A%BE</text></svg>">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+<title>棒球遊戲 — 合作結構與上市前策略備忘</title>
+<style>
+  :root {
+    --paper:      #F3F5EF;
+    --surface:    #FBFCF8;
+    --ink:        #151C16;
+    --ink-2:      #3E4A40;
+    --muted:      #6E7A6E;
+    --rule:       #D2D8CC;
+    --rule-soft:  #E3E8DE;
+    --accent:     #1E6B49;
+    --accent-dim: #E2EEE5;
+    --clay:       #A8451C;
+    --clay-dim:   #F2E2DA;
+    --meter-off:  #DDE2D8;
+
+    --f-display: "Avenir Next Condensed", "Helvetica Neue Condensed",
+                 "Arial Narrow", "Roboto Condensed",
+                 "PingFang TC", "Microsoft JhengHei", sans-serif;
+    --f-body:    "PingFang TC", "Hiragino Sans TC", "Microsoft JhengHei",
+                 "Noto Sans TC", -apple-system, "Segoe UI", system-ui, sans-serif;
+    --f-mono:    "SF Mono", "JetBrains Mono", Menlo, Consolas, ui-monospace, monospace;
+
+    --measure: 40rem;
+    --gutter:  7.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:      #101510;
+      --surface:    #171E18;
+      --ink:        #E6EBE1;
+      --ink-2:      #B6C0B4;
+      --muted:      #8A968A;
+      --rule:       #2C362D;
+      --rule-soft:  #222B23;
+      --accent:     #5CBE8B;
+      --accent-dim: #1B2E23;
+      --clay:       #E08A5E;
+      --clay-dim:   #2E211A;
+      --meter-off:  #2A332B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:      #101510;
+    --surface:    #171E18;
+    --ink:        #E6EBE1;
+    --ink-2:      #B6C0B4;
+    --muted:      #8A968A;
+    --rule:       #2C362D;
+    --rule-soft:  #222B23;
+    --accent:     #5CBE8B;
+    --accent-dim: #1B2E23;
+    --clay:       #E08A5E;
+    --clay-dim:   #2E211A;
+    --meter-off:  #2A332B;
+  }
+  :root[data-theme="light"] {
+    --paper:      #F3F5EF;
+    --surface:    #FBFCF8;
+    --ink:        #151C16;
+    --ink-2:      #3E4A40;
+    --muted:      #6E7A6E;
+    --rule:       #D2D8CC;
+    --rule-soft:  #E3E8DE;
+    --accent:     #1E6B49;
+    --accent-dim: #E2EEE5;
+    --clay:       #A8451C;
+    --clay-dim:   #F2E2DA;
+    --meter-off:  #DDE2D8;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 16px;
+    line-height: 1.78;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .wrap {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 7rem;
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead { border-bottom: 2px solid var(--ink); padding-bottom: 1.5rem; }
+  .kicker {
+    font-family: var(--f-display);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--clay);
+    font-weight: 600;
+  }
+  .masthead h1 {
+    font-size: clamp(1.9rem, 5vw, 2.9rem);
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    margin: 0.5rem 0 0;
+  }
+  .masthead .sub {
+    color: var(--ink-2);
+    max-width: var(--measure);
+    margin-top: 0.9rem;
+  }
+  .stamps {
+    display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+    margin-top: 1.4rem;
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- section skeleton ---------- */
+  section { border-bottom: 1px solid var(--rule); padding: 3rem 0; }
+  section:last-of-type { border-bottom: none; }
+
+  .sec-head { margin-bottom: 1.6rem; }
+  .eyebrow {
+    font-family: var(--f-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .sec-head h2 {
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    font-weight: 750;
+    letter-spacing: -0.015em;
+    line-height: 1.35;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .sec-head .lede { color: var(--ink-2); max-width: var(--measure); margin-top: 0.6rem; }
+
+  p { max-width: var(--measure); margin: 0 0 1rem; }
+  p:last-child { margin-bottom: 0; }
+  .flow > * + * { margin-top: 1rem; }
+  strong { font-weight: 700; }
+  em { font-style: normal; color: var(--clay); font-weight: 600; }
+
+  ul.plain { list-style: none; max-width: var(--measure); display: grid; gap: 0.6rem; margin: 0 0 1rem; padding: 0; }
+  ul.plain > li { padding-left: 1.1rem; position: relative; color: var(--ink-2); }
+  ul.plain > li::before {
+    content: ""; position: absolute; left: 0; top: 0.78em;
+    width: 5px; height: 5px; background: var(--accent);
+  }
+
+  /* ---------- stat row ---------- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 1.8rem;
+  }
+  .stat { background: var(--surface); padding: 1.1rem 1.2rem; }
+  .stat .n {
+    font-family: var(--f-display);
+    font-size: 2rem; font-weight: 700; line-height: 1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+  .stat .n small { font-size: 0.95rem; font-weight: 600; color: var(--muted); margin-left: 0.15em; }
+  .stat .l { font-size: 0.78rem; color: var(--muted); margin-top: 0.45rem; line-height: 1.5; }
+
+  /* ---------- ladder ---------- */
+  .scroller { overflow-x: auto; margin-top: 1.8rem; }
+  table.ladder {
+    width: 100%; min-width: 46rem;
+    border-collapse: collapse;
+    font-size: 0.87rem;
+  }
+  table.ladder th {
+    text-align: left;
+    font-family: var(--f-display);
+    font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600;
+    padding: 0 0.9rem 0.6rem; border-bottom: 1px solid var(--ink);
+  }
+  table.ladder th:first-child { padding-left: 0; }
+  table.ladder td { padding: 0.95rem 0.9rem; border-bottom: 1px solid var(--rule-soft); vertical-align: top; color: var(--ink-2); }
+  table.ladder td:first-child { padding-left: 0; }
+  table.ladder tr:last-child td { border-bottom: none; }
+  .rung { display: flex; align-items: baseline; gap: 0.55rem; }
+  .rung .idx {
+    font-family: var(--f-mono); font-size: 0.7rem; color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .rung .name { font-weight: 700; color: var(--ink); font-size: 0.95rem; white-space: nowrap; }
+  .meter { display: flex; gap: 2px; margin-bottom: 0.35rem; }
+  .meter i { width: 15px; height: 7px; background: var(--meter-off); display: block; }
+  .meter i.on { background: var(--clay); }
+  .meter-l { font-size: 0.74rem; color: var(--muted); }
+
+  /* ---------- compare ---------- */
+  .compare {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+    margin-top: 1.8rem;
+  }
+  .col { background: var(--surface); padding: 1.4rem; }
+  .col.pick { background: var(--accent-dim); }
+  .col h3 {
+    font-size: 1rem; font-weight: 750; margin: 0 0 0.15rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .tag {
+    font-family: var(--f-display); font-size: 0.62rem; letter-spacing: 0.13em;
+    text-transform: uppercase; font-weight: 700; padding: 0.15em 0.5em;
+    border: 1px solid currentColor;
+  }
+  .tag.no { color: var(--muted); }
+  .tag.yes { color: var(--accent); }
+  .col ul { list-style: none; padding: 0; margin: 0.9rem 0 0; display: grid; gap: 0.5rem; font-size: 0.87rem; color: var(--ink-2); }
+  .col ul li { padding-left: 1rem; position: relative; }
+  .col ul li::before { content: "–"; position: absolute; left: 0; color: var(--muted); }
+
+  .hero-n {
+    border-left: 3px solid var(--clay);
+    padding: 0.2rem 0 0.2rem 1.1rem;
+    margin: 1.8rem 0;
+    max-width: var(--measure);
+  }
+  .hero-n .n {
+    font-family: var(--f-display); font-size: 2.6rem; font-weight: 700;
+    line-height: 1; letter-spacing: -0.02em; color: var(--clay);
+    font-variant-numeric: tabular-nums;
+  }
+  .hero-n .cap { font-size: 0.87rem; color: var(--ink-2); margin-top: 0.5rem; }
+
+  /* ---------- timeline ---------- */
+  .tl { margin-top: 1.8rem; border-top: 1px solid var(--ink); }
+  .tl-row { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding: 0.95rem 0; border-bottom: 1px solid var(--rule-soft); align-items: baseline; }
+  .tl-row .when { font-family: var(--f-mono); font-size: 0.78rem; color: var(--clay); font-variant-numeric: tabular-nums; }
+  .tl-row .what { font-size: 0.92rem; color: var(--ink-2); }
+  .tl-row .what b { color: var(--ink); font-weight: 700; }
+
+  /* ---------- open items ---------- */
+  .open { display: grid; gap: 0.7rem; margin-top: 1.6rem; max-width: 46rem; list-style: none; padding: 0; }
+  .open li { display: grid; grid-template-columns: 1.4rem 1fr; gap: 0.6rem; align-items: start; color: var(--ink-2); font-size: 0.94rem; }
+  .open li::before {
+    content: ""; width: 0.95rem; height: 0.95rem; border: 1.5px solid var(--rule);
+    margin-top: 0.42rem; background: var(--surface);
+  }
+  .open li b { color: var(--ink); font-weight: 700; }
+
+  .note {
+    background: var(--clay-dim); border-left: 3px solid var(--clay);
+    padding: 1rem 1.2rem; margin-top: 1.6rem; max-width: 46rem;
+    font-size: 0.9rem; color: var(--ink-2);
+  }
+  .note b { color: var(--ink); }
+
+  footer { padding-top: 2.5rem; color: var(--muted); font-size: 0.8rem; font-family: var(--f-mono); }
+
+  @media (max-width: 640px) {
+    .tl-row { grid-template-columns: 1fr; gap: 0.2rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <span class="kicker">討論底稿 · 非合約</span>
+    <h1>棒球手遊：合作結構與上市前策略</h1>
+    <p class="sub">這份文件給 Benson 與開發者一起看，內容是我們對這款遊戲怎麼賣的共同判斷。所有數字都是起點，不是結論——目的是讓兩個人在同一張紙上討論，而不是各自猜對方在想什麼。合作條件另行討論，不在這份文件裡。</p>
+    <div class="stamps">
+      <span>版本 2026-08-03</span>
+      <span>階段 開發中 · 未上線</span>
+      <span>下一步 雙方會談</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">現況</span>
+      <h2>我們手上有什麼</h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">70<small>%</small></div><div class="l">開發進度（自評）</div></div>
+      <div class="stat"><div class="n">260</div><div class="l">Discord 社群人數</div></div>
+      <div class="stat"><div class="n">30</div><div class="l">持續試玩／討論的活躍成員</div></div>
+      <div class="stat"><div class="n">11<small>%</small></div><div class="l">活躍比例——這是品質訊號，不是規模</div></div>
+    </div>
+    <div class="flow" style="margin-top:1.8rem">
+      <p><strong>產品</strong>：手機端動作型棒球遊戲，核心賣點是單一角色的生涯養成模式（NBA 2K MyCareer、パワプロ サクセス 的形狀）。目前球隊球員為虛構，計畫分版本推進，第一版鎖定台灣。</p>
+      <p><strong>最重要的判斷</strong>：260 人的社群當作「遊戲好玩」的證據是充分的，當作「去談授權的籌碼」是遠遠不夠的。這兩件事不要混為一談。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">策略核心</span>
+      <h2>生涯模式的階梯、授權的階梯、行銷故事的階梯，是同一條階梯</h2>
+      <p class="lede">台灣棒球系統本身就是一條天然的養成路徑。把生涯模式做成這條路徑，授權就不再是「有流量之後才去換的東西」，而是遊戲結構上本來就需要的內容——談判說法完全不同，成功率也完全不同。</p>
+    </div>
+
+    <div class="scroller">
+      <table class="ladder">
+        <thead>
+          <tr>
+            <th>層級</th>
+            <th style="width:22%">在遊戲裡是什麼</th>
+            <th style="width:16%">授權難度</th>
+            <th>談判時怎麼說</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="rung"><span class="idx">01</span><span class="name">球場外觀</span></div></td>
+            <td>玩家第一眼認出「這是台灣」</td>
+            <td><div class="meter"><i class="on"></i><i></i><i></i><i></i><i></i></div><div class="meter-l">最容易</div></td>
+            <td>視覺成本低、爭議小，通常一封信就能開始談。先做這一階是為了讓後面每一階都有東西可看。</td>
+          </tr>
+          <tr>
+            <td><div class="rung"><span class="idx">02</span><span class="name">退役球員個人</span></div></td>
+            <td>生涯模式裡的教練、對手、里程碑對象</td>
+            <td><div class="meter"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><div class="meter-l">容易</div></td>
+            <td>單人授權成本遠低於聯盟，但情感重量最高。一位有份量的退役球星，行銷效果可能勝過一整個聯盟的標誌。</td>
+          </tr>
+          <tr>
+            <td><div class="rung"><span class="idx">03</span><span class="name">學生聯賽</span></div></td>
+            <td>生涯的起點：青棒、大專的晉升關卡</td>
+            <td><div class="meter"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><div class="meter-l">容易</div></td>
+            <td>他們缺的是曝光本身，不是錢。說法是「玩家必須先打過這一層才能進職棒，這是你們的舞台」，不是「授權給我」。</td>
+          </tr>
+          <tr>
+            <td><div class="rung"><span class="idx">04</span><span class="name">業餘成棒企業隊</span></div></td>
+            <td>職棒之前的最後一關</td>
+            <td><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><div class="meter-l">中等</div></td>
+            <td>台電、合庫這類是企業隊——這不是體育授權談判，是企業 BD。剛好是 Benson 本來就在做的事。</td>
+          </tr>
+          <tr>
+            <td><div class="rung"><span class="idx">05</span><span class="name">單一職棒球團</span></div></td>
+            <td>玩家的第一支職業球隊</td>
+            <td><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><div class="meter-l">困難</div></td>
+            <td>比談整個聯盟快得多。一隊點頭之後，其他隊的談判門檻會明顯下降。</td>
+          </tr>
+          <tr>
+            <td><div class="rung"><span class="idx">06</span><span class="name">CPBL 聯盟整體</span></div></td>
+            <td>完整的職棒生涯</td>
+            <td><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><div class="meter-l">最困難</div></td>
+            <td>前面五階全部都是這一階的背書材料。聯盟缺的是年輕受眾與數位觸點——我們要能證明自己就是那個觸點。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <b>一次性付費幫我們拆掉了這條路上最大的一顆地雷。</b> 如果採抽卡制，去談學生聯賽、青棒相關授權時，幾乎一定會卡在「未成年 ＋ 轉蛋 ＋ 真實球員」的觀感與法規問題，對方法務會直接擋掉。非抽卡制沒有這個問題——這一點要在會議上主動講出來，不要等對方問。
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">通路</span>
+      <h2>走棒球圈，不是遊戲圈</h2>
+    </div>
+    <div class="flow">
+      <p>幾乎每款獨立遊戲都在跟其他獨立遊戲搶同一批遊戲媒體與遊戲實況主。那是紅海，而且我們沒有優勢。<strong>棒球通路則幾乎沒有遊戲在競爭</strong>：PTT 棒球板、球迷社群、棒球 Podcast、體育記者、球團自媒體。對他們來說「台灣人做了一款棒球遊戲」是一個他們想講、而且整年缺乏的題材。</p>
+      <p>同一封信寄給遊戲媒體是第 200 封，寄給棒球媒體是第 1 封。</p>
+      <p>而且商業模型本身也把我們推向這條路：<em>一次性付費的單價撐不起買量</em>。CPI 要壓到很低才有正報酬，這對小眾題材幾乎不可能。所以創作者、社群、口碑不是備選方案——是唯一可行的通路。</p>
+    </div>
+    <ul class="plain" style="margin-top:1.4rem">
+      <li><strong>授權對象</strong>——價值最高、數量最少、前置期最長。就是上一節那六階。</li>
+      <li><strong>創作者與媒體</strong>——數量最大，而且要分成遊戲圈與棒球圈兩批名單，講法完全不同。</li>
+      <li><strong>平台編輯</strong>——Apple / Google 各地區的編輯團隊。他們靠「有故事的在地作品」填版位，需要提前數月建立關係。一次台灣區精選推薦的價值，可能超過半年的創作者外聯。</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">營利模式</span>
+      <h2>建議：一次性解鎖 ＋ 球季包，而不是月訂閱</h2>
+      <p class="lede">月費 70 元的直覺有一半是對的——授權是年度續約的循環成本，確實需要循環收入來對應。但體育遊戲這個類型早就有現成答案，而那個答案不是月訂閱，是球季制。</p>
+    </div>
+
+    <div class="hero-n">
+      <div class="n">4.3 個月</div>
+      <div class="cap">月費 70 元要贏過一次賣 300 元，玩家平均得訂這麼久。而生涯模式的實際行為是「集中投入三到四週跑完一個生涯，然後放下」——多數人會訂一到兩個月就退訂，也就是每人 70～140 元，<strong>比一次賣 300 還少</strong>。</div>
+    </div>
+
+    <div class="compare">
+      <div class="col">
+        <h3>純月訂閱 <span class="tag no">不建議</span></h3>
+        <ul>
+          <li>ARPU 很可能低於一次性解鎖</li>
+          <li>是一條每月都要交付新內容的跑步機，套在單人開發者身上風險很高</li>
+          <li>訂閱的阻力主要不是價格，是「承諾」與「之後要記得取消」——多數人付一次 300 比每月 70 輕鬆</li>
+          <li>某年授權沒續約、隊伍要下架時，付過錢的訂閱玩家會很生氣</li>
+        </ul>
+      </div>
+      <div class="col pick">
+        <h3>解鎖 ＋ 球季包 <span class="tag yes">建議</span></h3>
+        <ul>
+          <li><strong>一次性解鎖 NT$250–350</strong>：本體與生涯模式，鎖住每位玩家的最低價值，不靠留存</li>
+          <li><strong>球季包</strong>：對應真實球季（約三月至十月），含當季名單、賽程、新增授權內容</li>
+          <li>循環收入對到循環授權成本，結構上成立</li>
+          <li>內容承諾有邊界——一年交付一次，不是每個月</li>
+          <li>對授權方好講：「每一季我們會把你們的內容更新進去」</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flow" style="margin-top:1.6rem">
+      <p>附帶好處：真實球季的節奏本身就是一份免費的行銷日曆。開季、明星賽、季後賽、總冠軍，每一個都是現成的宣傳節點。</p>
+      <p><strong>但這一題不急著定案。</strong> 真正該先做的是讓網頁 Demo 跑一段時間——有了完成率與遊玩時長，才知道玩家會不會為了「下一季」回來，那個答案直接決定訂閱制到底成不成立。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">工具</span>
+      <h2>網頁 Demo 有三個用途，目前只用到一個</h2>
+    </div>
+    <ul class="plain">
+      <li><strong>導流</strong>——已經想到的用途。但建議調整終點：手機遊戲最高價值的 CTA 是<strong>商店預先註冊</strong>（上線當天自動通知、直接轉成首日安裝，而且是可累積、可拿給平台編輯看的數字）。Discord 應該是次要出口，留給想深入的那一小群人。</li>
+      <li><strong>測量</strong>——還沒被用到。在最後 30% 開發下去之前，Demo 可以先告訴我們生涯模式的鉤子有沒有中：完成率、平均遊玩時長、在哪一步流失。這比社群裡的熱情留言可信得多，也會直接影響剩下該做什麼。<strong>務必埋數據。</strong></li>
+      <li><strong>外聯載體</strong>——最值錢、也最容易被忽略的一個。一般獨立遊戲寄信給創作者要對方下載一包 build，成功率極低，這是遊戲外聯最大的摩擦點。我們可以在信裡放一條點開就能玩的連結。對授權談判更是如此：走進會議室讓對方拿自己的手機點一下就玩到，勝過任何一份簡報。</li>
+    </ul>
+    <div class="note">
+      <b>那 30 個活躍成員本身就是第一個名單來源，而且免費。</b> 裡面幾乎一定藏著本身在做內容的人、在棒球產業周邊工作的人、有社群連結的鐵粉。一個一個去聊，問他們怎麼找到這款遊戲、平常看誰的棒球內容、在哪些社群混。這同時是使用者訪談、創作者名單的種子、也是通路地圖——這禮拜就能做，不用等任何東西。
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">時程</span>
+      <h2>接下來十二個月的固定節點</h2>
+    </div>
+    <div class="tl">
+      <div class="tl-row"><div class="when">2026 · 08</div><div class="what"><b>合作條件談定</b>　同時開始訪談 Discord 那 30 位活躍成員</div></div>
+      <div class="tl-row"><div class="when">2026 · 08–09</div><div class="what"><b>網頁 Demo 上線並埋數據</b>　主 CTA 設為預先註冊；同步接觸球場與學生聯賽（授權階梯 01–03）</div></div>
+      <div class="tl-row"><div class="when">2026 · 10–11</div><div class="what"><b>棒球圈外聯開跑</b>　棒球 Podcast、球迷社群、體育記者。此時要有可引用的試玩數據</div></div>
+      <div class="tl-row"><div class="when">2026 · 12 · 04–06</div><div class="what"><b>G-EIGHT 展出</b>　現成的高品質曝光，也是一個外部強制的期限——獨立開發最缺的就是這個</div></div>
+      <div class="tl-row"><div class="when">2027 · 01–02</div><div class="what"><b>平台編輯接觸</b>　前置期最長的一條，要在上線前數月開始</div></div>
+      <div class="tl-row"><div class="when">2027 · 03</div><div class="what"><b>職棒開季</b>　真實球季就是行銷日曆的起點；球團級授權談判的最佳窗口</div></div>
+    </div>
+    <div class="note">
+      <b>技術面的一個提醒，現在做幾乎零成本，晚半年做會很痛。</b> 請把聯賽結構做成資料驅動——層級、聯盟、球隊、球員全部走設定檔，不要寫死在程式碼裡；授權內容也要能單獨開關（萬一某個授權沒續約要能下架）。否則之後要出日本版或通用版時，會發現那不是換資料，是重寫。
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">未決</span>
+      <h2>還沒有答案的事</h2>
+    </div>
+    <ul class="open">
+      <li><b>生涯階梯的地域綁定程度</b>　完全台灣 specific 是護城河，但天花板大致就是台灣加一點日韓。這是設計層級的分岔，越早定越好。</li>
+      <li><b>解鎖價格與球季包定價</b>　決定需要多少下載量才活得下去，也決定名單要鋪多大。</li>
+      <li><b>目標上線日</b>　需要一個雙方都說得出口的日期，即使它之後一定會變。沒有日期，行銷節奏就無從排起。</li>
+      <li><b>合作條件</b>　另行討論，不在這份文件的範圍內。</li>
+      <li><b>授權階梯先接觸哪一階</b>　傾向 01 球場與 03 學生聯賽並行，兩者門檻都低且互相加分。</li>
+    </ul>
+  </section>
+
+  <footer>
+    討論底稿　·　2026-08-03　·　所有數字為提案起點，非最終條件
+  </footer>
+
+</div>
+
+</body>
+</html>
