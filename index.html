@@ -261,10 +261,14 @@
 
   /* ---------- open items ---------- */
   .open { display: grid; gap: 0.7rem; margin-top: 1.6rem; max-width: 46rem; list-style: none; padding: 0; }
-  .open li { display: grid; grid-template-columns: 1.4rem 1fr; gap: 0.6rem; align-items: start; color: var(--ink-2); font-size: 0.94rem; }
+  .open li {
+    position: relative; padding-left: 1.75rem;
+    color: var(--ink-2); font-size: 0.94rem; line-height: 1.7;
+  }
   .open li::before {
-    content: ""; width: 0.95rem; height: 0.95rem; border: 1.5px solid var(--rule);
-    margin-top: 0.42rem; background: var(--surface);
+    content: ""; position: absolute; left: 0; top: 0.46em;
+    width: 0.95rem; height: 0.95rem; border: 1.5px solid var(--rule);
+    background: var(--surface);
   }
   .open li b { color: var(--ink); font-weight: 700; }
 
