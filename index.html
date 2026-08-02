@@ -216,6 +216,41 @@
   .meter i.on { background: var(--clay); }
   .meter-l { font-size: 0.74rem; color: var(--muted); }
 
+  table.comps { min-width: 44rem; }
+  table.comps .work { font-weight: 700; color: var(--ink); font-size: 0.95rem; display: block; }
+  table.comps .where { font-family: var(--f-mono); font-size: 0.7rem; color: var(--muted); display: block; margin-top: 0.25rem; }
+
+  /* ---------- facets: one ladder, three readings ---------- */
+  .facets {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1.5rem 2rem; margin-top: 1.8rem; padding-top: 1.3rem;
+    border-top: 1px solid var(--ink);
+  }
+  .facets h4 { font-size: 0.98rem; font-weight: 750; margin: 0 0 0.45rem; letter-spacing: -0.01em; }
+  .facets p { font-size: 0.87rem; color: var(--ink-2); margin: 0; max-width: none; }
+
+  /* ---------- framing pair ---------- */
+  .framing {
+    display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+    margin-top: 1.8rem; max-width: 46rem;
+  }
+  .fr { background: var(--surface); padding: 1.15rem 1.3rem; }
+  .fr.good { background: var(--accent-dim); }
+  .fr .lbl {
+    font-family: var(--f-display); font-size: 0.65rem; letter-spacing: 0.16em;
+    text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 0.5rem;
+    color: var(--muted);
+  }
+  .fr.good .lbl { color: var(--accent); }
+  .fr q { font-size: 1rem; line-height: 1.7; color: var(--ink); font-weight: 600; display: block; }
+  .fr q::before, .fr q::after { content: none; }
+  .fr .aside { font-size: 0.82rem; color: var(--muted); margin-top: 0.55rem; max-width: none; }
+
+  .payoff {
+    border-left: 3px solid var(--accent); padding: 0.35rem 0 0.35rem 1.1rem;
+    margin-top: 1.8rem; max-width: 46rem; font-size: 1rem; line-height: 1.7;
+  }
+
   /* ---------- compare ---------- */
   .compare {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
@@ -321,9 +356,75 @@
 
   <section>
     <div class="sec-head">
+      <span class="eyebrow">市場</span>
+      <h2>我們不是在開荒</h2>
+      <p class="lede">下面這幾款作品，已經替我們把市場的不同面向各驗證過一遍。談授權、談平台編輯、談媒體的時候，這是最有用的一組事實——因為對方問的第一個問題幾乎都是「這種東西真的有人玩嗎」。</p>
+    </div>
+
+    <div class="scroller">
+      <table class="ladder comps">
+        <thead>
+          <tr>
+            <th style="width:22%">作品</th>
+            <th style="width:39%">它已經證明了什麼</th>
+            <th>對我們的意義</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="work">Baseball 9</span><span class="where">韓國小團隊 · 手機</span></td>
+            <td>小團隊做手機棒球動作遊戲，<strong>在沒有任何職棒授權的情況下</strong>也能做到全球規模。</td>
+            <td>授權是加分項，不是上市前提。我們可以先上線，再一階一階往上談——不必等到拿到授權才敢動。</td>
+          </tr>
+          <tr>
+            <td><span class="work">全民打棒球 系列</span><span class="where">台灣</span></td>
+            <td>台灣在地的棒球遊戲市場是真實存在的，而且養得起一個長期產品。</td>
+            <td>「台灣人會不會玩台灣的棒球遊戲」這一題已經有答案，不需要在任何一場會議裡重新論證。</td>
+          </tr>
+          <tr>
+            <td><span class="work">実況パワフルプロ野球</span><span class="where">日本 · サクセス 模式</span></td>
+            <td>單一角色的生涯養成模式有三十年的生命力，是這個類型裡最耐久的核心玩法。</td>
+            <td>我們選的核心玩法不是實驗品。這是最有說服力的設計背書，對投資人和平台編輯都好用。</td>
+          </tr>
+          <tr>
+            <td><span class="work">プロ野球スピリッツA</span><span class="where">日本 · 手機</span></td>
+            <td>日本手機棒球市場由重度職棒授權的產品壟斷，新進者很難從正面切入。</td>
+            <td><strong>這是要避開的戰場，不是要挑戰的。</strong> 日本版要等台灣站穩，而且必須想清楚切角再進。</td>
+          </tr>
+          <tr>
+            <td><span class="work">MLB The Show 等年度作</span><span class="where">美國 · 主機</span></td>
+            <td>體育遊戲用「一年一季」收費，是延續三十年的產業常態，玩家早就習慣了。</td>
+            <td>球季包不需要教育市場。這也是我們建議球季制而非月訂閱的產業依據。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="payoff">
+      <strong>而這幾款之間留下了一塊沒有人佔的空白。</strong> Baseball 9 與全民打棒球都是球隊經營與街機打擊；パワプロ 的生涯模式扎根在日本脈絡、生態重心也不在台灣手機市場。<em>「手機 ＋ 單一角色生涯養成 ＋ 台灣棒球脈絡」這個交集，目前沒有人做。</em> 這句話就是我們對外的一句話定位。
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
       <span class="eyebrow">策略核心</span>
       <h2>生涯模式的階梯、授權的階梯、行銷故事的階梯，是同一條階梯</h2>
-      <p class="lede">台灣棒球系統本身就是一條天然的養成路徑。把生涯模式做成這條路徑，授權就不再是「有流量之後才去換的東西」，而是遊戲結構上本來就需要的內容——談判說法完全不同，成功率也完全不同。</p>
+      <p class="lede">台灣棒球系統本身就是一條天然的養成路徑：青棒 → 大專 → 業餘成棒 → 職棒 → 旅外。把生涯模式做成這條路徑，授權就不再是「有流量之後才去換的東西」，而是遊戲結構上本來就需要的內容。</p>
+    </div>
+
+    <div class="facets">
+      <div>
+        <h4>在遊戲設計上，它是關卡進程</h4>
+        <p>玩家從最底層一路打上去，每一階都是一個要突破的門檻。這條路徑不是為了拿授權硬加的——它本來就是生涯模式需要的骨架。</p>
+      </div>
+      <div>
+        <h4>在授權談判上，它是接觸順序</h4>
+        <p>由下往上談，門檻由低到高。每談成一階，下一階就多一份可以拿出來給對方看的背書。順序本身就是策略。</p>
+      </div>
+      <div>
+        <h4>在行銷上，它是一句話的故事</h4>
+        <p>「從黑豹旗打到中職」。這句話不需要解釋，每個台灣球迷都懂，而且目前沒有任何一款遊戲在講它。</p>
+      </div>
     </div>
 
     <div class="scroller">
@@ -375,6 +476,23 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="framing">
+      <div class="fr">
+        <span class="lbl">一般獨立遊戲的說法</span>
+        <q>我們遊戲有一些玩家，可以幫你們曝光，希望能拿到授權。</q>
+        <p class="aside">對方聽到的是「一個沒沒無聞的產品想借用我們的品牌」。這是在請求，而且對方沒有理由答應。</p>
+      </div>
+      <div class="fr good">
+        <span class="lbl">階梯一體之後的說法</span>
+        <q>我們的生涯模式裡，玩家必須先打過你們這一層，才能進職棒。這一段就是你們的舞台，我們想把它做對。</q>
+        <p class="aside">對方聽到的是「有人把我們放進一個成長故事的關鍵位置」。這是在邀請——而且拒絕的成本變成「我們被拿掉了」。</p>
+      </div>
+    </div>
+
+    <div class="payoff">
+      <strong>這就是「一體」的實際意思：每談成一階，遊戲就多一段內容、行銷就多一個新聞點、下一階的談判就多一份背書。</strong> 三件事是同一個動作的三個結果，不是三件要各自排時程、各自估人力的工作。這也是為什麼授權不該被排在「等有流量再說」的後面——它從第一天就在產生複利。
     </div>
 
     <div class="note">
